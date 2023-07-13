@@ -11,9 +11,9 @@ describe('Gilded Rose', function () {
     });
 
     it('matches Sulfuras', function() {
-        const gildedRose = new GildedRose([ new Item('Sulfuras', 0, 80) ]);
+        const gildedRose = new GildedRose([ new Item('Sulfuras, Hand of Ragnaros', 0, 80) ]);
         const items = gildedRose.updateQuality();
-        expect(items[0].name).to.equal('Sulfuras');
+        expect(items[0].name).to.equal('Sulfuras, Hand of Ragnaros');
     })
 
     it('matches Aged Brie', function() {
@@ -89,7 +89,7 @@ describe('Gilded Rose', function () {
             , new Item('Aged Brie', 5, 0)
             , new Item('Aged Brie', 5, 50)
             , new Item('Aged Brie', 10, 20)
-            , new Item('Sulfuras', 0, 80)
+            , new Item('Sulfuras, Hand of Ragnaros', 0, 80)
             , new Item('Backstage passes to a TAFKAL80ETC concert', 15, 5)
             , new Item('Backstage passes to a TAFKAL80ETC concert', 10, 10)
             , new Item('Backstage passes to a TAFKAL80ETC concert', 5, 5)
@@ -123,7 +123,7 @@ describe('Gilded Rose', function () {
             new Item("Aged Brie", 4, 1),
             new Item("Aged Brie", 4, 50),
             new Item("Aged Brie", 9, 21),
-            new Item("Sulfuras", -1, 78),
+            new Item("Sulfuras, Hand of Ragnaros", 0, 80),
             new Item("Backstage passes to a TAFKAL80ETC concert", 14, 6),
             new Item("Backstage passes to a TAFKAL80ETC concert", 9, 12),
             new Item("Backstage passes to a TAFKAL80ETC concert", 4, 8),
@@ -137,7 +137,5 @@ describe('Gilded Rose', function () {
           ];
         const items = gildedRose.updateQuality();
         expect(items).to.deep.equal(goldenRecord);
-
     });
-
 });

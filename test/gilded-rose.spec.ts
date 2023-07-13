@@ -16,6 +16,28 @@ describe('Gilded Rose', function () {
         expect(items[0].name).to.equal('Sulfuras');
     })
 
+    it('matches Aged Brie', function() {
+        const gildedRose = new GildedRose([
+            new Item('Aged Brie', 0, 0)
+            ,new Item('Aged Brie', 0, 50)
+            ,new Item('Aged Brie', 1, 1)
+            ,new Item('Aged Brie', -1, 50)
+            ,new Item('Aged Brie', -1, 0)        
+        ]);
+
+        const brieRecord = [
+            new Item("Aged Brie", -1, 2),
+            new Item("Aged Brie", -1, 50),
+            new Item("Aged Brie", 0, 2),
+            new Item("Aged Brie", -2, 50),
+            new Item("Aged Brie", -2, 2),
+        ];
+
+        const items = gildedRose.updateQuality();
+//        expect(items[0].name).to.equal('Aged Brie');
+        expect(items).to.deep.equal(brieRecord);
+    })
+
     it('matches the golden record', function() {
         const gildedRose = new GildedRose([ 
             new Item('foo0', 0, 0)
@@ -84,7 +106,6 @@ describe('Gilded Rose', function () {
             new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
           ];
         const items = gildedRose.updateQuality();
-   //     expect(items[0].name).to.equal(goldenRecord);
         expect(items).to.deep.equal(goldenRecord);
 
     });

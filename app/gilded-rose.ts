@@ -18,20 +18,21 @@ export class GildedRose {
     }
 
     updateQuality() {
-        for (let i = 0; i < this.items.length; i++) {
+//        for (let i = 0; i < this.items.length; i++) {
+        for(let item of this.items) {
 /* Start of my refactor 1 - check if Sulfuras and continue next iteration (for) look if it is */
-            if(this.items[i].name === 'Sulfuras, Hand of Ragnaros'){
+            if(item.name === 'Sulfuras, Hand of Ragnaros'){
                 continue;
             }
 /* End of my refactor 1 - Sulfuras check */
 
 /* Start of my refactor 2  - Brie */
-            if (this.items[i].name === 'Aged Brie') {
-                this.items[i].sellIn = this.items[i].sellIn - 1;
-               if (this.items[i].quality < 50) {
-                    this.items[i].quality = this.items[i].quality + 1;
-                    if (this.items[i].sellIn < 0) {
-                        this.items[i].quality = this.items[i].quality + 1;
+            if (item.name === 'Aged Brie') {
+                item.sellIn = item.sellIn - 1;
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                    if (item.sellIn < 0) {
+                        item.quality = item.quality + 1;
                     }                           
                 }
                 continue;
@@ -39,44 +40,41 @@ export class GildedRose {
 /* End of my refactor 2 - Brie */
 
 /* Start of my refactor 3 - Backstage Passes */
-            if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
-                this.items[i].sellIn = this.items[i].sellIn - 1;
-                if (this.items[i].sellIn > 10) {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 1;
+            if (item.name === 'Backstage passes to a TAFKAL80ETC concert') {
+                item.sellIn = item.sellIn - 1;
+                if (item.sellIn > 10) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
                     }
-                } else if (this.items[i].sellIn < 11 && this.items[i].sellIn > 5) {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 2;
+                } else if (item.sellIn < 11 && item.sellIn > 5) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 2;
                     }
-                } else if (this.items[i].sellIn < 6 && this.items[i].sellIn >=0) {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 3;
+                } else if (item.sellIn < 6 && item.sellIn >=0) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 3;
                     }
-                } else if (this.items[i].sellIn < 0){
-                    this.items[i].quality = 0; //this.items[i].quality - this.items[i].quality;
+                } else if (item.sellIn < 0){
+                    item.quality = 0; //this.items[i].quality - this.items[i].quality;
                 }
-                if (this.items[i].quality > 50) {
-                    this.items[i].quality = 50;
+                if (item.quality > 50) {
+                    item.quality = 50;
                 }
                 continue;
             }
 /* End of my refactor 3 - Backstage Passes */
         
-            if (this.items[i].quality > 0) {
-                this.items[i].quality = this.items[i].quality - 1
+            if (item.quality > 0) {
+                item.quality = item.quality - 1
             }
 
-            this.items[i].sellIn = this.items[i].sellIn - 1;
-
-            if (this.items[i].sellIn < 0) {
-                if (this.items[i].quality > 0) {
-                    this.items[i].quality = this.items[i].quality - 1
+            item.sellIn = item.sellIn - 1;
+            if (item.sellIn < 0) {
+                if (item.quality > 0) {
+                    item.quality = item.quality - 1
                 }
             }
-
         }
-
         return this.items;
     }
 }

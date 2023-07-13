@@ -34,8 +34,38 @@ describe('Gilded Rose', function () {
         ];
 
         const items = gildedRose.updateQuality();
-//        expect(items[0].name).to.equal('Aged Brie');
         expect(items).to.deep.equal(brieRecord);
+    })
+
+    it('matches backstage pass', function() {
+        const gildedRose = new GildedRose([
+            new Item('Backstage passes to a TAFKAL80ETC concert', 15, 5)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', 10, 10)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', 5, 5)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', 10, 50)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', 5, 50)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', -1, 50)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', -1, 10)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', -1, 5)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', 1, 3)
+            , new Item('Backstage passes to a TAFKAL80ETC concert', -1, 15)       
+        ]);
+
+        const backStagePass = [
+            new Item("Backstage passes to a TAFKAL80ETC concert", 14, 6),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 9, 12),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 4, 8),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50),
+            new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+            new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+            new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 0, 6),
+            new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+        ];
+
+        const items = gildedRose.updateQuality();
+        expect(items).to.deep.equal(backStagePass);
     })
 
     it('matches the golden record', function() {

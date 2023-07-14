@@ -19,11 +19,9 @@ export class GildedRose {
 
     updateQuality() {
         for(let item of this.items) {
-/* Start of my refactor 1 - check if Sulfuras and continue next iteration (for) look if it is */
             if(item.name === 'Sulfuras, Hand of Ragnaros'){
                 continue;
             }
-/* End of my refactor 1 - Sulfuras check */
 
             item.sellIn = item.sellIn - 1;
 
@@ -36,6 +34,10 @@ export class GildedRose {
                     else if (item.sellIn < 6) {item.quality += 3;}
                     else if (item.sellIn < 11) {item.quality += 2;}
                     else item.quality ++;
+                    break;
+                case 'Conjured':
+                    // Degrades twice as fast as normal items (-4 daily)
+                    item.quality -= 4;
                     break;
                 default:
                     item.quality -= (item.sellIn >= 0 ? 1 : 2);

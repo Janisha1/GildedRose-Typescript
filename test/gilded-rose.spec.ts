@@ -10,6 +10,32 @@ describe('Gilded Rose', function () {
 
     });
 
+    it('Conjured should degrade twice as fast', function() {
+        const gildedRose = new GildedRose([ 
+            new Item('Conjured', 0, 0)
+            ,new Item('Conjured', 1, 0)
+            ,new Item('Conjured', 0, 50)
+            ,new Item('Conjured', -1, 0)
+            ,new Item('Conjured', -1, 10)
+            ,new Item('Conjured', -2, 0)
+            ,new Item('Conjured', -2, 20)        
+        ]);
+
+            const conjured = [
+                new Item("Conjured", -1, 0),
+                new Item("Conjured", 0, 0),
+                new Item("Conjured", -1, 46),
+                new Item("Conjured", -2, 0),
+                new Item("Conjured", -2, 6),
+                new Item("Conjured", -3, 0),
+                new Item("Conjured", -3, 16)
+            ];
+
+        const items = gildedRose.updateQuality();
+        expect(items).to.deep.equal(conjured);
+
+    });
+
     it('matches Sulfuras', function() {
         const gildedRose = new GildedRose([ new Item('Sulfuras, Hand of Ragnaros', 0, 80) ]);
         const items = gildedRose.updateQuality();

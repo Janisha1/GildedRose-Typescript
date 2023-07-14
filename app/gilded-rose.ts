@@ -36,8 +36,7 @@ export class GildedRose {
                     else item.quality ++;
                     break;
                 case 'Conjured':
-                    // Degrades twice as fast as normal items (-4 daily)
-                    item.quality -= 4;
+                    item.quality -= (item.sellIn >= 0 ? 2 : 4);
                     break;
                 default:
                     item.quality -= (item.sellIn >= 0 ? 1 : 2);

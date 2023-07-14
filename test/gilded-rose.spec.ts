@@ -18,7 +18,9 @@ describe('Gilded Rose', function () {
             ,new Item('Conjured', -1, 0)
             ,new Item('Conjured', -1, 10)
             ,new Item('Conjured', -2, 0)
-            ,new Item('Conjured', -2, 20)        
+            ,new Item('Conjured', -2, 20)
+            ,new Item('Conjured', 10, 20)
+            ,new Item('Conjured', 1, 15)        
         ]);
 
             const conjured = [
@@ -28,7 +30,9 @@ describe('Gilded Rose', function () {
                 new Item("Conjured", -2, 0),
                 new Item("Conjured", -2, 6),
                 new Item("Conjured", -3, 0),
-                new Item("Conjured", -3, 16)
+                new Item("Conjured", -3, 16),
+                new Item("Conjured", 9, 18),
+                new Item("Conjured", 0, 13)
             ];
 
         const items = gildedRose.updateQuality();
